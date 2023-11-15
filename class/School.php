@@ -157,7 +157,7 @@ class School extends Dbconfig {
 	}
 	/*****************Student methods****************/
 	public function listStudent(){		
-		$sqlQuery = "SELECT s.id, s.name, s.photo, s.gender, s.dob, s.mobile, s.email, s.current_address, s.father_name, s.mother_name,s.admission_no, s.roll_no, s.admission_date, s.academic_year, c.name as class, se.section 
+		$sqlQuery = "SELECT s.id, s.name, s.photo, s.gender, s.dob, s.mobile, s.email, s.address, s.father_name, s.mother_name,s.admission_no, s.roll_no, s.admission_date, s.academic_year, c.name as class, se.section 
 			FROM ".$this->studentTable." as s
 			LEFT JOIN ".$this->classesTable." as c ON s.class = c.id
 			LEFT JOIN ".$this->sectionsTable." as se ON s.section = se.section_id ";
@@ -211,13 +211,13 @@ class School extends Dbconfig {
 			} else {
 				echo "Sorry, there was an error uploading your file.";
 			}					
-			$insertQuery = "INSERT INTO ".$this->studentTable."(name, email, mobile, gender, current_address, father_name, mother_name, class, section, admission_no, roll_no, academic_year, admission_date, dob, photo) 
+			$insertQuery = "INSERT INTO ".$this->studentTable."(name, email, mobile, gender, address, father_name, mother_name, class, section, admission_no, roll_no, academic_year, admission_date, dob, photo) 
 				VALUES ('".$_POST["sname"]."', '".$_POST["email"]."', '".$_POST["mobile"]."', '".$_POST["gender"]."', '".$_POST["address"]."', '".$_POST["fname"]."', '".$_POST["mname"]."', '".$_POST["classid"]."', '".$_POST["sectionid"]."', '".$_POST["registerNo"]."', '".$_POST["rollNo"]."', '".$_POST["year"]."', '".$_POST["admission_date"]."', '".$_POST["dob"]."', '".$fileName."')";
 			$userSaved = mysqli_query($this->dbConnect, $insertQuery);
 		}
 	}
 	public function getStudentDetails(){
-		$sqlQuery = "SELECT s.id, s.name, s.photo, s.gender, s.dob, s.mobile, s.email, s.current_address, s.father_name, s.mother_name,s.admission_no, s.roll_no, s.admission_date, s.academic_year, s.class, s.section 
+		$sqlQuery = "SELECT s.id, s.name, s.photo, s.gender, s.dob, s.mobile, s.email, s.address, s.father_name, s.mother_name,s.admission_no, s.roll_no, s.admission_date, s.academic_year, s.class, s.section 
 			FROM ".$this->studentTable." as s
 			LEFT JOIN ".$this->classesTable." as c ON s.class = c.id 
 			WHERE s.id = '".$_POST["studentid"]."'";		
@@ -239,7 +239,7 @@ class School extends Dbconfig {
 				}
 			}
 			$updateQuery = "UPDATE ".$this->studentTable." 
-			SET name = '".$_POST["sname"]."', email = '".$_POST["email"]."', mobile = '".$_POST["mobile"]."', gender = '".$_POST["gender"]."', current_address = '".$_POST["address"]."', father_name = '".$_POST["fname"]."', mother_name = '".$_POST["mname"]."', class = '".$_POST["classid"]."', section = '".$_POST["sectionid"]."', admission_no = '".$_POST["registerNo"]."', roll_no = '".$_POST["rollNo"]."', academic_year = '".$_POST["year"]."', admission_date = '".$_POST["admission_date"]."', dob = '".$_POST["dob"]."' $photoUpdate
+			SET name = '".$_POST["sname"]."', email = '".$_POST["email"]."', mobile = '".$_POST["mobile"]."', gender = '".$_POST["gender"]."', address = '".$_POST["address"]."', father_name = '".$_POST["fname"]."', mother_name = '".$_POST["mname"]."', class = '".$_POST["classid"]."', section = '".$_POST["sectionid"]."', admission_no = '".$_POST["registerNo"]."', roll_no = '".$_POST["rollNo"]."', academic_year = '".$_POST["year"]."', admission_date = '".$_POST["admission_date"]."', dob = '".$_POST["dob"]."' $photoUpdate
 			WHERE id ='".$_POST["studentid"]."'";
 			echo $updateQuery;
 			$isUpdated = mysqli_query($this->dbConnect, $updateQuery);		
@@ -506,7 +506,7 @@ class School extends Dbconfig {
 				$query = "AND a.attendance_date = '".$attendanceDate."'";
 			}
 		
-			$sqlQuery = "SELECT s.id, s.name, s.photo, s.gender, s.dob, s.mobile, s.email, s.current_address, s.father_name, s.mother_name,s.admission_no, s.roll_no, s.admission_date, s.academic_year, a.attendance_status, a.attendance_date
+			$sqlQuery = "SELECT s.id, s.name, s.photo, s.gender, s.dob, s.mobile, s.email, s.address, s.father_name, s.mother_name,s.admission_no, s.roll_no, s.admission_date, s.academic_year, a.attendance_status, a.attendance_date
 				FROM ".$this->studentTable." as s
 				LEFT JOIN ".$this->attendanceTable." as a ON s.id = a.student_id
 				WHERE s.class = '".$_POST["classid"]."' AND s.section='".$_POST["sectionid"]."' $query ";
@@ -626,7 +626,7 @@ class School extends Dbconfig {
 	}
 	public function getStudentsAttendance(){		
 		if($_POST["classid"] && $_POST["sectionid"] && $_POST["attendanceDate"]) {
-			$sqlQuery = "SELECT s.id, s.name, s.photo, s.gender, s.dob, s.mobile, s.email, s.current_address, s.father_name, s.mother_name,s.admission_no, s.roll_no, s.admission_date, s.academic_year, a.attendance_status
+			$sqlQuery = "SELECT s.id, s.name, s.photo, s.gender, s.dob, s.mobile, s.email, s.address, s.father_name, s.mother_name,s.admission_no, s.roll_no, s.admission_date, s.academic_year, a.attendance_status
 				FROM ".$this->studentTable." as s
 				LEFT JOIN ".$this->attendanceTable." as a ON s.id = a.student_id
 				WHERE s.class = '".$_POST["classid"]."' AND s.section='".$_POST["sectionid"]."' AND a.attendance_date = '".$_POST["attendanceDate"]."'";

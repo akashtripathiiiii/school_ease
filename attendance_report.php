@@ -52,7 +52,7 @@ display: none;
 									<div class="col-md-4">
 										<div class="form-group">
 											<label for="attendanceDate">Attendance Date</label><small class="req"> *</small>			
-											<input type='text' class="form-control" id="attendanceDate" name="attendanceDate" value="2019/06/22" placeholder="yyyy/mm/dd" />										
+											<input type='text' class="form-control" id="attendanceDate" name="attendanceDate" value="2023/10/22" placeholder="yyyy/mm/dd" />										
 										</div>
 									</div> 										
 								</div>

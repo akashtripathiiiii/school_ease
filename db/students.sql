@@ -25,8 +25,7 @@ CREATE TABLE `students` (
   `photo` varchar(40) DEFAULT NULL,
   `mobile` int(10) UNSIGNED NOT NULL,
   `email` varchar(40) DEFAULT NULL,
-  `current_address` varchar(40) DEFAULT NULL,
-  `permanent_address` varchar(40) DEFAULT NULL,
+  `address` varchar(40) DEFAULT NULL,
   `father_name` varchar(255) NOT NULL,
   `father_mobile` int(10) UNSIGNED NOT NULL,
   `father_occupation` varchar(255) NOT NULL,
@@ -47,7 +46,7 @@ CREATE TABLE `students` (
 -- Dumping data for table `students`
 --
 
-INSERT INTO `students` VALUES (`id`, `name`, `gender`, `dob`, `photo`, `mobile`, `email`, `current_address`, `permanent_address`, `father_name`, `father_mobile`, `father_occupation`, `mother_name`, `mother_mobile`, `admission_no`, `roll_no`, `class`, `section`, `stream`, `hostel`, `admission_date`, `category`, `academic_year`);
+INSERT INTO `students` VALUES (`id`, `name`, `gender`, `dob`, `photo`, `mobile`, `email`, `address`, `father_name`, `father_mobile`, `father_occupation`, `mother_name`, `mother_mobile`, `admission_no`, `roll_no`, `class`, `section`, `stream`, `hostel`, `admission_date`, `category`, `academic_year`);
 
 --
 -- Indexes for dumped tables
@@ -67,7 +66,7 @@ ALTER TABLE `students`
 -- AUTO_INCREMENT for table `students`
 --
 ALTER TABLE `students`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
